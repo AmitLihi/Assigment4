@@ -31,6 +31,33 @@ We gathered information from: Google, YouTube for videos explanations, Stack Ove
 <br> <list>
 <li> Source code - Starting task point – Boaz GitHub -https://github.com/benmoshe/OOP_EX2-EX4 
 <li> Calculate azimuth - https://stackoverflow.com/questions/9457988/bearing-from-one-coordinate-to-another
-<li> Convert global coordinates to pixels - https://stackoverflow.com/questions/38748832/convert-longitude-and-latitude-coordinates-to-image-of-a-map-pixels-x-and-y-coor <li>
+<li> Convert global coordinates to pixels - https://stackoverflow.com/questions/38748832/convert-longitude-and-latitude-coordinates-to-image-of-a-map-pixels-x-and-y-coor
 <li> JFileChooser  https://stackoverflow.com/questions/14589386/how-to-save-file-using-jfilechooser-in-java 
-
+  <br> <br>
+Compering results:<br>
+Example 1:<br>
+Our Score :60.9	in 2019-01-13 23:09:35 Other: 62.8 in	2019-01-13 23:09:35
+<br>	
+Example 2:<br>
+Our Score :71.4 in 2019-01-13 23:10:07 Other: 75 in 2019-01-13 23:10:07
+<br>
+Example 3:<br>
+Our Score :58.6 in	2019-01-13 23:11:21 Other: 55.9 in	2019-01-13 23:11:21
+<br>
+Example 4:<br>
+Our Score :74.7 in	22019-01-13 23:11:44 Other: 80.1	in 2019-01-13 23:11:44
+<br>
+Example 5:<br>
+Our Score :74.7 in 2019-01-13 23:12:04 Other: 32.8 2019-01-13 23:12:04
+<br>
+Example 6:<br>
+Other: 17 in	2019-01-13 23:12:56
+<br>
+Example 7:<br>
+Other: 39 in	2019-01-13 23:13:05
+<br>
+Example 8:<br>
+Other: 42.2 in	2019-01-13 23:13:38
+<br>
+Example 9:<br>
+Other: 7 in 2019-01-13 23:13:59
