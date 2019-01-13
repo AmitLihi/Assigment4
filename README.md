@@ -34,7 +34,7 @@ We gathered information from: Google, YouTube for videos explanations, Stack Ove
 <li> Convert global coordinates to pixels - https://stackoverflow.com/questions/38748832/convert-longitude-and-latitude-coordinates-to-image-of-a-map-pixels-x-and-y-coor
 <li> JFileChooser  https://stackoverflow.com/questions/14589386/how-to-save-file-using-jfilechooser-in-java 
   <br> <br>
-Compering results:<br>
+Statistics:<br><br>
 Example 1:<br>
 Our Score :60.9	in 2019-01-13 23:09:35 Other: 62.8 in	2019-01-13 23:09:35
 <br>	
