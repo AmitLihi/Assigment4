@@ -34,17 +34,17 @@ public class MyThreads extends Thread {
 			}
 			mf.setoc(new Object_Collections());
 			mf.getoc().read(mf.getBoard_data());
-			mf.setAzimuth(ma.mainAlgorithm(mf.getoc()));
+			if(mf.isAutoOrmanu())mf.setAzimuth(ma.mainAlgorithm(mf.getoc()));
 			mf.getPlay1().rotate(mf.getAzimuth()); 
 			mf.getConvert().convertObject_Collections2Pix(mf.getoc());//converting to pixels
 			mf.paintAgain();
 			try {
-				MyThreads.sleep(5);
+				MyThreads.sleep(20);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
-		mq = new MySQL (mf.getPlay1().getStatistics(), 1149748017);
+		//mq = new MySQL (mf.getPlay1().getStatistics(), 1149748017);
 		System.out.println("**** Done Game (user stop) ****");
 	}	
 }

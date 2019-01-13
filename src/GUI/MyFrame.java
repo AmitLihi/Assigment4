@@ -41,6 +41,7 @@ public class MyFrame extends JFrame implements MouseListener{
 	private Play play1;
 	private int setObject = -1;	
 	private double azimuth = 0;
+	private boolean autoOrmanu = false; //false=manu, true=auto
 
 
 	/**
@@ -65,7 +66,8 @@ public class MyFrame extends JFrame implements MouseListener{
 		MenuItem csv = new MenuItem("Import from CSV");
 		MenuItem save = new MenuItem("Save to CSV");
 		Menu play = new Menu("Play"); 
-		MenuItem run = new MenuItem("Run the oc");
+		MenuItem runManually = new MenuItem("run manually");
+		MenuItem runAutomatically = new MenuItem("run automatically");
 
 		menuBar.add(file);
 		file.add(csv);
@@ -73,7 +75,8 @@ public class MyFrame extends JFrame implements MouseListener{
 		menuBar.add(add);
 		add.add(me);
 		menuBar.add(play);
-		play.add(run);
+		play.add(runManually);
+		play.add(runAutomatically);
 
 		this.setMenuBar(menuBar);
 
@@ -82,6 +85,8 @@ public class MyFrame extends JFrame implements MouseListener{
 				setSetObject(0);
 			}
 		});
+
+
 
 		//this is the import from csv button
 		csv.addActionListener(new ActionListener(){
@@ -96,7 +101,7 @@ public class MyFrame extends JFrame implements MouseListener{
 				play1 = new Play(namepath.getPath());
 				oc.readFile(namepath.getPath());
 				convert.convertObject_Collections2Pix(oc);//converting to pixels
-				play1.setIDs(203,204,3333);
+				play1.setIDs(203262647,204784268);
 				board_data = play1.getBoard();
 				for(int i=0;i<board_data.size();i++) {
 					System.out.println(board_data.get(i));
@@ -119,10 +124,22 @@ public class MyFrame extends JFrame implements MouseListener{
 			}
 		});
 
-		play.addActionListener(new ActionListener(){
+		runManually.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				if(play1 != null) {
-					flag = false; 
+					flag = false;
+					autoOrmanu = false;
+					startThread();
+				}
+				else System.out.println("Load a game before running");
+			}
+		});
+
+		runAutomatically.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				if(play1 != null) {
+					flag = false;
+					autoOrmanu = true;
 					startThread();
 				}
 				else System.out.println("Load a game before running");
@@ -141,12 +158,16 @@ public class MyFrame extends JFrame implements MouseListener{
 			e.printStackTrace();
 		}
 	}
-
+	/**
+	 * This function is responsible for starting the threads
+	 */
 	private void startThread() {
 		MyThreads m = new MyThreads(this); 
 		m.start();
 	}
-
+/**
+ * This class sends to "repaint"
+ */
 	public void paintAgain(){
 		repaint();	
 	}
@@ -215,7 +236,7 @@ public class MyFrame extends JFrame implements MouseListener{
 				play1.setInitLocation(p.y(),p.x());
 			}
 			else {
-				azimuth = convert.azimuth(convert.convert2Coords(myImage.getHeight(), myImage.getWidth(),y,x), convert.convert2Coords(myImage.getHeight(), myImage.getWidth(),oc.getMe().getP().x(),oc.getMe().getP().y()));
+				azimuth = convert.azimuth(convert.convert2Coords(myImage.getHeight(), myImage.getWidth(),y,x), convert.convert2Coords(myImage.getHeight(), myImage.getWidth(),oc.getMe().getP().y(),oc.getMe().getP().x()));
 			}
 		}
 		repaint();
@@ -246,6 +267,12 @@ public class MyFrame extends JFrame implements MouseListener{
 	public void mousePressed(MouseEvent arg0) {}
 	@Override
 	public void mouseReleased(MouseEvent arg0) {}
+	public boolean isAutoOrmanu() {
+		return autoOrmanu;
+	}
+	public void setAutoOrmanu(boolean autoOrmanu) {
+		this.autoOrmanu = autoOrmanu;
+	}
 
 	public static void main(String[] args) {
 

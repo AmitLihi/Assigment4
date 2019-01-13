@@ -9,22 +9,33 @@ import Objects.Object_Collections;
 import graph.Graph;
 import graph.Graph_Algo;
 import graph.Node;
-
+/**
+ * This class represents the shortest path for the player to his fruits using Boaz Ben Moshe's algorythm
+ * @author Amit & Lihi
+ */
 public class GameGraph {
 
 	private Object_Collections oc;
 	private Me me;
 	private Fruit fruit;
-	private Graph graph;
+	private Graph graph = new Graph();
 	private Node save;
 	private ArrayList<String> shortestPath;
-
-	public GameGraph(Object_Collections oc, Fruit fruit, Graph graph) {
+/**
+ * Constructor that gets object collections object and one fruit and creates the gamegraph object from it
+ * @param oc is the object collections object
+ * @param fruit is the target
+ */
+	public GameGraph(Object_Collections oc, Fruit fruit) {
 		this.oc = oc;
 		this.fruit = fruit;
-		this.graph = graph;
-		funtion();	}
-
+		funtion();
+	}
+	
+/**
+ * This function is the main function that responsible for using Boaz's algorithm 
+ * @return arraylist of the shortest path
+ */
 	private ArrayList funtion() {
 		graph.add(new Node("source")); // Node "a"
 		for(int i=0;i<oc.getCorners().size();i++) {
@@ -38,8 +49,7 @@ public class GameGraph {
 
 		for (int i = 0; i < oc.getCorners().size(); i++) { // corner
 			for (int j = 0; j < oc.getCorners().get(i).getVisible().size(); j++) {
-				if( oc.getCorners().get(i).getName() != oc.getCorners().get(j).getName())
-					graph.addEdge("" + oc.getCorners().get(i).getName(), "" + oc.getCorners().get(j).getName(), distance(oc.getCorners().get(i).getPoint(), oc.getCorners().get(j).getPoint()));
+				graph.addEdge("" + oc.getCorners().get(i).getName(), "" + oc.getCorners().get(i).getVisible().get(j).getName(), distance(oc.getCorners().get(i).getPoint(), oc.getCorners().get(i).getVisible().get(j).getPoint()));
 			}
 		}
 
@@ -50,14 +60,14 @@ public class GameGraph {
 				}
 			}
 		}
-		
+
 		Graph_Algo.dijkstra(graph, "source");
 		save = graph.getNodeByName("target");
 		shortestPath = save.getPath();
 		return shortestPath;
 	}
 
-	
+
 	public ArrayList<String> getShortestPath() {
 		return shortestPath;
 	}

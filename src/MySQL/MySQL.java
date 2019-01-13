@@ -7,10 +7,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-
+/**
+ * This class represents the statistics between us to other players 
+ * @author Amit & Lihi
+ */
 public class MySQL {
-
-
+/**
+ * Constructor which gets a string with our score and id of map, check what place are we compare to others
+ * @param s is our score
+ * @param mapID is id of map
+ */
 	public MySQL(String s, int mapID) {
 		String jdbcUrl="jdbc:mysql://ariel-oop.xyz:3306/oop"; //?useUnicode=yes&characterEncoding=UTF-8&useSSL=false";
 		String jdbcUser="student";
